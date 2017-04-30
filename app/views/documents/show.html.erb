@@ -1,17 +1,26 @@
 <%- model_class = Document -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= @document.title %>
+  <% unless @document.active %>
+    <div class="pull-right">
+      <%= fa_icon 'lock' %>
+    </div>
+    <% end %>
+  </h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @document.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @document.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:active) %>:</strong></dt>
-  <dd><%= @document.active %></dd>
-</dl>
-
+<%= div_for @document,
+            class: (@document.active? ? 'editable' : 'locked') do %>
+  <dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+    <dd><%= @document.description %></dd>
+    <dt><strong><%= model_class.human_attribute_name(:active) %>:</strong></dt>
+    <dd><%= @document.active %></dd>
+  </dl>
+  <div class="document-sections">
+    <%= render(@document.sections) || 'Nessuna sezione' %>
+    <%= link_to 'Aggiungi sezione', new_document_section_path(@document), remote: true %>
+  </div>
+<% end %>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               documents_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

@@ -23,7 +23,8 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'kaminari'
 gem 'record_tag_helper', '~> 1.0'
 gem 'twitter-bootstrap-rails'
-
+gem 'slim'
+gem 'font-awesome-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

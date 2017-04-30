@@ -1,12 +1,27 @@
 it:
   activerecord:
     models:
-      user: Utente
-      document: Documento
-      section: Sezione
-      paragrafo: Paragrafo
+      user:
+        one: Utente
+        other: Utenti
+      document:
+        one: Documento
+        other: Documenti
+      section:
+        one: Sezione
+        other: Sezioni
+      paragrafo:
+        one: Paragrafo
+        other: Paragrafi
     attributes:
       document:
         title: Titolo
         description: Descrizione
         active: Attivo
+      section:
+        title: Titolo
+        content: Testo
+        editable: Modificabile
+        order: Numero
+        document_id: Documento
+        created_at: Data creazione
