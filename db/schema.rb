@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429202106) do
+ActiveRecord::Schema.define(version: 20170430174000) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "text",         limit: 800, default: "", null: false
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20170429202106) do
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "title",   limit: 100, default: "",    null: false
-    t.string  "version", limit: 30,  default: "",    null: false
-    t.boolean "active",              default: false, null: false
-    t.boolean "valid",               default: false, null: false
+    t.string   "title"
+    t.string   "description"
+    t.boolean  "active",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "engine_schema_info", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,9 +62,11 @@ ActiveRecord::Schema.define(version: 20170429202106) do
     t.string   "uid"
     t.string   "name"
     t.string   "oauth_token"
+    t.string   "locale",           default: "it",  null: false
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.boolean  "admin",            default: false, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
 end

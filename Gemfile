@@ -20,6 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'kaminari'
+gem 'record_tag_helper', '~> 1.0'
+gem 'twitter-bootstrap-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

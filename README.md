@@ -7,6 +7,8 @@ It's going to run on heroku.
 
 * It seems to run on ruby 2.3.0, with rails 5.0.2
 * No particular dependencies apart from what's in Gemfile
+* Needs google *CLIENT_ID* and *CLIENT_SECRET* since auth is done
+  via google oauth
 
 Things you may want to cover:
 

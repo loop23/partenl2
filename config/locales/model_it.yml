@@ -1,0 +1,12 @@
+it:
+  activerecord:
+    models:
+      user: Utente
+      document: Documento
+      section: Sezione
+      paragrafo: Paragrafo
+    attributes:
+      document:
+        title: Titolo
+        description: Descrizione
+        active: Attivo

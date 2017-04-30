@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+document = Document.create(title: 'Regolamento R.O.M.E.',
+                           description: "blah",
+                           active: false)
