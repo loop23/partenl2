@@ -1,21 +1,18 @@
 <%- model_class = Document -%>
 <div class="page-header">
   <h1><%= @document.title %>
-  <% unless @document.active %>
-    <div class="pull-right">
-      <%= fa_icon 'lock' %>
-    </div>
+    <% unless @document.active %>
+    <%= link_to_if current_user.admin?, unlock_document_path(@document) do %>
+    <%= fa_icon 'lock border pull-right' %>
     <% end %>
+  <% end %>
   </h1>
 </div>
 <%= div_for @document,
             class: (@document.active? ? 'editable' : 'locked') do %>
-  <dl class="dl-horizontal">
-    <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-    <dd><%= @document.description %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:active) %>:</strong></dt>
-    <dd><%= @document.active %></dd>
-  </dl>
+  <div class="description">
+    <%= @document.description %>
+  </div>
   <div class="document-sections">
     <%= render(@document.sections) || 'Nessuna sezione' %>
     <%= link_to 'Aggiungi sezione', new_document_section_path(@document), remote: true %>

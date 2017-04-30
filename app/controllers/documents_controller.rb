@@ -37,6 +37,11 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def unlock
+    @document.status = 'active'
+    @document.save!
+  end
+
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update

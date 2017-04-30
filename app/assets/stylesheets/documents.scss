@@ -11,3 +11,10 @@ div.document {
 div.document.locked {
   background-color: #eee;
 }
+
+.document .description {
+    margin: 1em;
+    text-align: center;
+    font-style: italic;
+    font-size: 1.3em;
+}

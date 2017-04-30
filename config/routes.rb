@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :documents do
+    member do
+      post :unlock
+    end
     resources :sections, shallow: true
   end
 
