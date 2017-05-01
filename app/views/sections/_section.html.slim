@@ -7,4 +7,11 @@
     = section.content
   .paragraphs
     = render section.paragraphs
-    = link_to 'Nuovo paragrafo', new_section_paragraph_path(section), remote: true
+    = link_to 'Nuovo paragrafo',
+              new_section_paragraph_path(section),
+              remote: true
+    ' |
+    = link_to 'Elimina Sezione',
+               section_path(section),
+               method: :delete,
+               remote: true

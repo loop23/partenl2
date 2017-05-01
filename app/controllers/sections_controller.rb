@@ -15,8 +15,7 @@ class SectionsController < ApplicationController
   # GET /sections/new
   def new
     @document = Document.find(params[:document_id])
-    @section = Section.new
-    @document.sections << @section
+    @section = Section.new(document: @document)
   end
 
   # GET /sections/1/edit
@@ -59,8 +58,10 @@ class SectionsController < ApplicationController
   def destroy
     @section.destroy
     respond_to do |format|
-      format.html { redirect_to sections_url, notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to @section.document,
+                    notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

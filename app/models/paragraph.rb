@@ -26,7 +26,11 @@ class Paragraph < ApplicationRecord
   end
 
   def full_order
-    [order, parent ? parent.order : ''].compact.reverse.join('.')
+    if parent
+      "#{parent.full_order}.#{order}"
+    else
+      "#{section.order}.#{order}"
+    end
   end
 
 end
