@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :paragraphs
   resources :documents do
     member do
       post :unlock
     end
-    resources :sections, shallow: true
+    resources :sections, shallow: true do
+      resources :paragraphs, shallow: true
+    end
   end
 
   get 'auth/:provider/callback', to: 'sessions#create'

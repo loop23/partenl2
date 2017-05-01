@@ -1,0 +1,6 @@
+<% if @parent %>
+  $('#<%= dom_id @parent %>')
+<% else %>
+$('#<%= dom_id @section %>')
+<% end %>
+  .append('<%= j(render 'paragraphs/form', paragraph: @paragraph) %>');

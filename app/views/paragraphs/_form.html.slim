@@ -1,0 +1,12 @@
+= form_for(paragraph) do |f|
+  = f.hidden_field :section_id
+  = f.hidden_field :paragraph_id
+  = render 'form_errors', object: paragraph
+  .field
+    = f.label :content
+    = f.text_area :content, required: true, autocomplete: :off
+  /.field
+    = f.label :order
+    = f.number_field :order
+  .action
+    = f.submit remote: true

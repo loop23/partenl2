@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @paragraph.content %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @paragraph.order %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @paragraph.section %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @paragraph.parent %>
+</p>
+
+<%= link_to 'Edit', edit_paragraph_path(@paragraph) %> |
+<%= link_to 'Back', paragraphs_path %>

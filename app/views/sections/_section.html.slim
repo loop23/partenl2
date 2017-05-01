@@ -5,3 +5,6 @@
     = section.title
   .content
     = section.content
+  .paragraphs
+    = render section.paragraphs
+    = link_to 'Nuovo paragrafo', new_section_paragraph_path(section), remote: true

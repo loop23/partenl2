@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430182318) do
+ActiveRecord::Schema.define(version: 20170430221811) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "text",         limit: 800, default: "", null: false
@@ -38,10 +38,14 @@ ActiveRecord::Schema.define(version: 20170430182318) do
   end
 
   create_table "paragraphs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text    "text",       limit: 65535, null: false
-    t.integer "section_id",               null: false
-    t.integer "position"
-    t.index ["section_id"], name: "fk_section", using: :btree
+    t.text     "content",      limit: 65535, null: false
+    t.integer  "order",                      null: false
+    t.integer  "section_id"
+    t.integer  "paragraph_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["paragraph_id"], name: "index_paragraphs_on_paragraph_id", using: :btree
+    t.index ["section_id"], name: "index_paragraphs_on_section_id", using: :btree
   end
 
   create_table "schema_info", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -71,5 +75,7 @@ ActiveRecord::Schema.define(version: 20170430182318) do
     t.datetime "updated_at",                       null: false
   end
 
+  add_foreign_key "paragraphs", "paragraphs"
+  add_foreign_key "paragraphs", "sections"
   add_foreign_key "sections", "documents"
 end

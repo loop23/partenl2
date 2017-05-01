@@ -1,0 +1,12 @@
+= div_for paragraph do
+  .number
+    = paragraph.full_order
+    | )
+  .content
+    = paragraph.content
+  .children
+    = render paragraph.children
+  = link_to '+ Add para',
+            new_paragraph_path(section_id: paragraph.section,
+                               parent: paragraph),
+            remote: true
