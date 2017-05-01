@@ -6,6 +6,12 @@ class Paragraph < ApplicationRecord
              optional: true,
              foreign_key: :paragraph_id
   has_many :children, class_name: 'Paragraph', foreign_key: :paragraph_id
+  has_many :votes, as: :votable
+  has_many :up_votes, -> { where(up: true) },
+           as: :votable, class_name: 'Vote'
+  has_many :down_votes, -> { where(up: false) },
+           as: :votable, class_name: 'Vote'
+
   validates :content, :order, presence: true
   validates :order, uniqueness: { scope: [:section_id, :paragraph_id] }
   before_validation :set_order, on: :create

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  resources :paragraphs
+
+
+  concern :votable do
+    member do
+      post :upvote, :downvote
+    end
+  end
+
+  resources :paragraphs, concerns: :votable
+
   resources :documents do
     member do
       post :unlock
