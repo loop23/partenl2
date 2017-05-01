@@ -11,6 +11,8 @@ class Paragraph < ApplicationRecord
            as: :votable, class_name: 'Vote'
   has_many :down_votes, -> { where(up: false) },
            as: :votable, class_name: 'Vote'
+  has_many :upvoters, class_name: 'User', through: :up_votes, source: :user
+  has_many :downvoters, class_name: 'User', through: :down_votes, source: :user
 
   validates :content, :order, presence: true
   validates :order, uniqueness: { scope: [:section_id, :paragraph_id] }

@@ -1,9 +1,13 @@
 .vote-box
-  = link_to "Vote up (#{ paragraph.up_votes.size})",
-            upvote_paragraph_path(paragraph),
-            remote: true,
-            method: :post
-  = link_to "Vote down (#{ paragraph.down_votes.size})",
-            downvote_paragraph_path(paragraph),
-            remote: true,
-            method: :post
+  .upvotes
+    = link_to "Vote up (#{ paragraph.up_votes.size})",
+              upvote_paragraph_path(paragraph),
+              remote: true,
+              method: :post
+    = render paragraph.upvoters
+  .downvotes
+    = link_to "Vote down (#{ paragraph.down_votes.size})",
+              downvote_paragraph_path(paragraph),
+              remote: true,
+              method: :post
+    = render paragraph.downvoters

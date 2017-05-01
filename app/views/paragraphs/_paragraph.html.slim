@@ -8,11 +8,12 @@
     = render paragraph.children
   - if current_user.admin?
     .admin-commands
-      = link_to '+ Add paragrafo',
+      => link_to '+ Add paragrafo',
                 new_paragraph_path(section_id: paragraph.section,
                                    parent: paragraph),
                 remote: true
       - if paragraph.children.empty?
+        ' |
         = link_to '- Rem paragrafo',
                   paragraph_path(paragraph),
                   method: :delete,

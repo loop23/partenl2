@@ -1,5 +1,6 @@
 class ParagraphsController < ApplicationController
-  before_action :set_paragraph, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_paragraph,
+                only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   include Votable
   # GET /paragraphs
   # GET /paragraphs.json
